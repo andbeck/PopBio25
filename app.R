@@ -37,7 +37,7 @@ server <- function(input, output, session) {
   
   output$selected_matrix <- renderTable({
     selected_matrix()
-  }, rownames = TRUE)
+  }, rownames = TRUE, digits = 3)
   
   output$lambda <- renderPrint({
     lambda(selected_matrix())
@@ -48,7 +48,7 @@ server <- function(input, output, session) {
   }, rownames = TRUE)
   
   output$sensitivity <- renderTable({
-    sensitivity(selected_matrix())
+    sensitivity(selected_matrix(), zero = TRUE)
   }, rownames = TRUE)
   
   output$elasticity <- renderTable({
